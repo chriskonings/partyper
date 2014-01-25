@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<LINK href="partyper.css" rel="stylesheet" type="text/css">
+
+<HTML>
+
+	<HEAD>
+		<title>.partyper</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+	</HEAD>
+
+	<BODY>
+	<h1><p>.partyper</p></h1>
+
+		<audio loop="loop" >
+		  <source src="remember.mp3" type="audio/mpeg">
+		  <source src="remember.ogg" type="audio/ogg">
+		  Your browser does not support this audio format.
+		</audio>
+
+		<textarea id="partyper" rows="10" cols="50">
+		</textarea>
+
+		<a href="http://chriskonings.com"><p>chriskonings.com</p></a>
+	</BODY>
+</HTML>
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+
+	alert( "Start typing to party and don't stop!" );
+
+	var typingTimer;
+	var doneTypingInterval = 2000;
+
+	$('#partyper').keyup(function(){
+	    audioPlayer.play();
+			$('body').css('background-image', 'url(./party.gif)');
+	    typingTimer = setTimeout(doneTyping, doneTypingInterval);
+	});
+
+	$('#partyper').keydown(function(){
+	    clearTimeout(typingTimer);
+	});
+
+	function doneTyping () {
+		$('body').css('background-image', 'url(./black.jpg)');
+	 audioPlayer.pause();
+	}
+
+});
+
+var audioPlayer = document.getElementsByTagName('audio')[0];
+
+function playPause() {
+	if(audioPlayer!=undefined) {
+  	audioPlayer.pause();
+    } else {
+   		loadPlayer();
+      }
+    }
+</script>
